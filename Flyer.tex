@@ -1,0 +1,161 @@
+\documentclass[a4paper]{article}
+
+\usepackage[ignoreall,margin=1cm]{geometry}
+\usepackage{multicol}
+\usepackage{qrcode}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+%\usepackage{showframe}
+
+
+\usepackage{ifthen}
+\newboolean{totawatch}
+\setboolean{totawatch}{false}
+
+%\setmainfont{VCR_OSD_MONO}[
+%    Path=./VCR_OSD_MONO/,
+%    Extension = .ttf
+%    ]
+
+\setmainfont{MonaSans}[
+    Ligatures=TeX,
+    Path=./Mona Sans/TTF/,
+    Scale=1.0,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+    ]
+
+\newfontfamily\vcrFont{VCR_OSD_MONO}[
+    Ligatures=TeX,
+    Path=./VCR_OSD_MONO/,
+    Extension = .ttf
+]
+
+
+\begin{document}
+
+\pagestyle{empty}
+\centering
+
+\colorbox{black}
+{
+\color{white}
+\begin{minipage}{0.981\textwidth}
+\centering
+
+\vspace{1cm}
+
+\begin{multicols}{3}
+
+\includegraphics{toilet}
+
+\columnbreak
+{
+{
+\mbox{}
+\vcrFont
+\fontsize{75pt}{60pt}\selectfont
+TOTA\par
+}
+
+\fontsize{20pt}{30pt}\selectfont
+Toilets on the Air\par
+}
+\columnbreak
+
+\includegraphics{dish}
+
+\end{multicols}
+
+\huge
+
+FM: 430.200 MHz\hspace{1cm}DMR: Brandmeister TG26224\par
+
+\ifthenelse{\boolean{totawatch}}{
+Online-Log at totawatch.de\par
+}
+
+\vspace{0.5cm}
+\end{minipage}
+}
+
+\vfill
+
+\Huge
+
+{
+\vcrFont
+
+\fontsize{200pt}{200pt}\selectfont
+T-01\par
+}
+\vfill
+
+{
+\Huge
+
+\textbf{Not a ham? Want to participate?}
+
+Visit us at Chaoswelle
+
+More info: Congress Wiki
+}
+\vfill
+
+\large
+
+
+\ifthenelse{\boolean{totawatch}}{
+\newcommand{\FooterColumnCount}{3}
+}{
+\newcommand{\FooterColumnCount}{2}
+}
+
+\begin{multicols}{\FooterColumnCount}
+\Large
+\textbf{c3nav TOTA Overlay}\par
+\vspace{0.5em}
+\qrcode[height=4cm]{https://37c3.c3nav.de/l/tota}
+
+\columnbreak
+
+\ifthenelse{\boolean{totawatch}}{
+\vspace{0.5cm}
+
+\textbf{Online Log}
+
+\qrcode[height=4cm]{https://totawatch.de/T/T-01}
+
+\columnbreak
+}
+
+\textbf{More Info}
+
+\qrcode[height=4cm]{https://events.ccc.de/congress/2023/hub/project/tota/}
+
+\end{multicols}
+
+\begin{multicols}{\FooterColumnCount}
+
+https://37c3.c3nav.de/l/tota
+
+\columnbreak
+
+\ifthenelse{\boolean{totawatch}}{
+https://totawatch.de/T/T-01
+
+\columnbreak
+}
+
+https://events.ccc.de/congress/\\2023/hub/project/tota/
+
+
+\end{multicols}
+
+
+\end{document}
