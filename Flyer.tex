@@ -12,7 +12,13 @@
 
 \usepackage{ifthen}
 \newboolean{totawatch}
-\setboolean{totawatch}{false}
+\setboolean{totawatch}{true}
+
+\ifthenelse{\boolean{totawatch}}{
+\newcommand{\FooterColumnCount}{3}
+}{
+\newcommand{\FooterColumnCount}{2}
+}
 
 %\setmainfont{VCR_OSD_MONO}[
 %    Path=./VCR_OSD_MONO/,
@@ -37,10 +43,19 @@
 ]
 
 
+\usepackage{datatool}
+\DTLsetseparator{;}
+
+
 \begin{document}
 
 \pagestyle{empty}
 \centering
+
+
+\DTLloadrawdb{refs}{totarefs.db}
+\DTLforeach{refs}{\totaref=Ref}{
+\pagebreak
 
 \colorbox{black}
 {
@@ -92,7 +107,7 @@ Online-Log at totawatch.de\par
 \vcrFont
 
 \fontsize{200pt}{200pt}\selectfont
-T-01\par
+\totaref\par
 }
 \vfill
 
@@ -110,12 +125,6 @@ More info: Congress Wiki
 \large
 
 
-\ifthenelse{\boolean{totawatch}}{
-\newcommand{\FooterColumnCount}{3}
-}{
-\newcommand{\FooterColumnCount}{2}
-}
-
 \begin{multicols}{\FooterColumnCount}
 \Large
 \textbf{c3nav TOTA Overlay}\par
@@ -129,7 +138,7 @@ More info: Congress Wiki
 
 \textbf{Online Log}
 
-\qrcode[height=4cm]{https://totawatch.de/T/T-01}
+\qrcode[height=4cm]{https://totawatch.de/T/\totaref}
 
 \columnbreak
 }
@@ -147,7 +156,7 @@ https://37c3.c3nav.de/l/tota
 \columnbreak
 
 \ifthenelse{\boolean{totawatch}}{
-https://totawatch.de/T/T-01
+https://totawatch.de/T/\totaref
 
 \columnbreak
 }
@@ -158,4 +167,6 @@ https://events.ccc.de/congress/\\2023/hub/project/tota/
 \end{multicols}
 
 
+\pagebreak
+}
 \end{document}
