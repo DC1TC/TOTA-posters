@@ -51,7 +51,7 @@
 
 \pagestyle{empty}
 \centering
-
+\vcrFont
 
 \DTLloadrawdb{refs}{totarefs.db}
 \DTLforeach{refs}{\totaref=Ref}{
@@ -63,41 +63,44 @@
 \begin{minipage}{0.981\textwidth}
 \centering
 
-\vspace{1cm}
+%\vspace{0.1cm}
 
 \begin{multicols}{3}
-
+\null
+\vfill
 \includegraphics{toilet}
-
+\vfill
 \columnbreak
 {
 {
-\mbox{}
+\null
 \vcrFont
-\fontsize{75pt}{60pt}\selectfont
+\fontsize{65pt}{55pt}\selectfont
 TOTA\par
 }
 
-\fontsize{20pt}{30pt}\selectfont
+\fontsize{25pt}{30pt}\selectfont
 Toilets on the Air\par
 }
 \columnbreak
-
+\null
+\vfill
 \includegraphics{dish}
-
+\vfill
 \end{multicols}
+\vspace{0.05cm}
 
-\huge
-
-FM: 430.200 MHz\hspace{1cm}DMR: Brandmeister TG26224\par
-
-\ifthenelse{\boolean{totawatch}}{
-Online-Log at totawatch.de\par
-}
-
-\vspace{0.5cm}
 \end{minipage}
 }
+\vfill
+\huge
+
+FM: 430.200 MHz\hspace{1cm}DMR: Brandmeister TG26223\par
+
+\ifthenelse{\boolean{totawatch}}{
+Log Online at totawatch.de\par
+}
+
 
 \vfill
 
@@ -117,8 +120,6 @@ Online-Log at totawatch.de\par
 \textbf{Not a ham? Want to participate?}
 
 Visit us at Chaoswelle
-
-More info: Congress Wiki
 }
 \vfill
 
@@ -127,7 +128,7 @@ More info: Congress Wiki
 
 \begin{multicols}{\FooterColumnCount}
 \Large
-\textbf{c3nav TOTA Overlay}\par
+\textbf{Locations\\ on c3nav}\par
 \vspace{0.5em}
 \qrcode[height=4cm]{https://37c3.c3nav.de/l/tota}
 
@@ -136,32 +137,32 @@ More info: Congress Wiki
 \ifthenelse{\boolean{totawatch}}{
 \vspace{0.5cm}
 
-\textbf{Online Log}
+\textbf{Log Online}
 
-\qrcode[height=4cm]{https://totawatch.de/T/\totaref}
+\qrcode[height=4cm]{https://2023.totawatch.de/t/\totaref}
 
 \columnbreak
 }
 
-\textbf{More Info}
-
+\textbf{More Info\\}
+\vspace{1cm}
 \qrcode[height=4cm]{https://events.ccc.de/congress/2023/hub/project/tota/}
 
 \end{multicols}
 
 \begin{multicols}{\FooterColumnCount}
 
-https://37c3.c3nav.de/l/tota
+\texttt{37c3.c3nav.de/l/tota}
 
 \columnbreak
 
 \ifthenelse{\boolean{totawatch}}{
-https://totawatch.de/T/\totaref
+\texttt{2023.totawatch.de/t/\totaref}
 
 \columnbreak
 }
 
-https://events.ccc.de/congress/\\2023/hub/project/tota/
+\texttt{events.ccc.de/congress/\\2023/hub/project/tota/}
 
 
 \end{multicols}
